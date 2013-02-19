@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Fecesbook</title>
+<script>
+	function addstatus()
+	{
+		var x = document.getElementById("msg");
+		var newItem = document.createElement("p");
+		var d = new Date();
+		var day = d.getDate();
+		var mon = d.getMonth();
+		var y = d.getFullYear();
+		var h = d.getHours();
+		var min = d.getMinutes();
+		var inside;
+		if(mon < 10){
+			mon = "0" + mon;
+		}
+		if(day < 10){
+			day = "0" + day;
+		}
+		if(h < 10){
+			h = "0" + h;
+		}
+		if(min < 10){
+			min = "0" + min;
+		}
+		inside = mon + "/" + day + "/" + y + " " + h + ":" + min + " - " + x.value;	
+		var status = document.createTextNode(inside);
+		newItem.appendChild(status);
+		var list = document.getElementById("status");
+		list.insertBefore(newItem, list.childNodes[0])
+	}
+</script>
+</head>
+
+<body>
+	<h1>Fecebook</h1>
+	<div id="nav">
+		<ul>
+			<li id="home">Home</li>
+			<li id="groups">Groups</li>
+			<li id="profile">Profile</li>
+			<li id="contacts">Contacts</li>
+			<li id="inbox">Inbox</li>
+			<li id="applications">Applications</li>
+		</ul>
+	</div>
+	<h2 id="fullname">Sophie Wolfe</h2>
+	<p><img src="http://sophiewolfe.com/wp-content/gallery/me/me.jpg" alt="profile" /></p>
+	<h3>What are you thinking about? <input type="text" id="msg" name="msg" size="30" onchange="addstatus()"/></h3>
+	<h3>Updates</h3>
+	<div id="status">
+	</div>
+
+
+</body>
+</html>
